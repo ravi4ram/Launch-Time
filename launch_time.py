@@ -36,7 +36,7 @@ import pytz
 #        [ Chapter 8.6.1 Launch Phase ]
 #     4. MISSION DESIGN AND ANALYSIS FOR IRNSS-1A
 #        [ https://www.researchgate.net/publication/277475032_MISSION_DESIGN_AND_ANALYSIS_FOR_IRNSS-1A ]
-d
+#
 # 
 # Author: Ravi Ram       
 # """
