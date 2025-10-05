@@ -196,14 +196,14 @@ def calculate_launch_raan(launch_time, i, lat, azimuth):
     ch_dn = np.isclose(azimuth, azimuth_dn_deg, atol=10.0, equal_nan=False)
     
     # determine ascending/descending node
-    if ch_an:
+    if not ch_an:
         # assume launch azimuth as ascending node
         delta_deg = azimuth
         # LST at the ascending node: LWSTAN = Ω + δ
         RAAN_deg = ( LST_deg - delta_deg )  % 360   
         return RAAN_deg
         
-    if ch_dn:
+    if not ch_dn:
         # assume launch azimuth as descending node
         gamma_deg = 180 - azimuth
         # LST at the descending node: LWSTDN = Ω + 180 - δ
@@ -242,7 +242,7 @@ def test_case_1():
 
    
     # reverse calculation (using azimuth check RAAN matches original) for testing
-    azimuth = 101.5964
+    azimuth = 49.0931
     launch_datetime = datetime(2013, 7, 1, 18, 31, 25).replace(tzinfo=pytz.utc)
     
     print(f'Reverse calculation (Find RAAN using azimuth, launch_datetime)')
