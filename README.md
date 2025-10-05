@@ -1,7 +1,6 @@
 # Launch Time
 > Program implemented to calculate the ideal time to launch into an orbit for a given RAAN and an inclination.  
-> Also functions are provided to calculate RAAN for a specific launch time at certain azimuth and inclination.    
-
+> Also functions are provided to calculate RAAN for a specific launch time at certain azimuth and inclination.   
 
 ## Table of contents
 * [General info](#general-info)
@@ -25,7 +24,8 @@ Apart from orbital mechanics, there are other restrictions defining other kinds 
 
 For a given launch site, the range of permitted launch azimuths is usually restricted due to safety concerns of flying a launch vehicle over densely populated areas. For instance, the launch azimuth restrictions at Sriharikota Launch Center (SDSC) are 0° < β < 140°    
 &nbsp;        
-For azimuth restrictions on other spaceports refer :    https://ofrohn.github.io/seh-doc/list-lc.html
+For azimuth restrictions on other spaceports refer :    
+https://ofrohn.github.io/seh-doc/list-lc.html
 &nbsp;    
    
 
@@ -39,10 +39,11 @@ For azimuth restrictions on other spaceports refer :    https://ofrohn.github.io
 In order to determine when to launch, we need to find the local sidereal time (LST) when the intersections of the launch site and the orbital plane happens.    
 
 *Using the input data,*   
-i, orbit inclination.
-φ, launch site latitude.
-Ω, right ascension of the ascending node (RAAN)
-t, UTC 0 hr launch datetime -(Y, M, D, 0, 0, 0) 
+
+i, orbit inclination.   
+φ, launch site latitude.     
+Ω, right ascension of the ascending node (RAAN)     
+t, UTC 0 hr launch datetime -(Y, M, D, 0, 0, 0)    
 
 *To compute local sidereal time (LST), we need to calculate:*    
 δ, the window location angle.     
@@ -85,16 +86,13 @@ sin α / sin a = sin β / sin b = sin γ / sin c
 *Law of cosines :*       
 cos a = cos b cos c + sin b sin c cos α     
 cos α = -cos β cos γ + sin β sin γ cos a     
-
 &nbsp;    
 
-**Launch time for prograde orbit (i < 90∘) and northern hemisphere **    
-***     
+**Launch time for prograde orbit (i < 90∘) and northern hemisphere**    
+     
 cos(i) = - cos(90) cos(γ) + sin(90) sin(γ) cos(φ)     
 
-since   
-cos(90°) = 0 and sin(90°) = 1      
-
+since cos(90°) = 0 and sin(90°) = 1      
 cos(i) =  sin(γ) cos(φ)      
 
 =>      
@@ -111,21 +109,15 @@ LST = Ω + δ
 β = 180∘ - γ   
 LST = Ω + 180∘ - δ    
 
-    
 &nbsp;    
 LST in degrees can be converted in terms of time using,    
 LST time (degrees) = LST time (hours) * 15°/hr  
 &nbsp;    
 
-
 ### Test Case    
-    
-*To calculate launch time for a given RAAN, inclination form Sriharikota   
-and     
-To calculate RAAN for a given launch time, azimuth and inclination form Sriharikota*          
+*To calculate launch time for a given RAAN, inclination form Sriharikota and to calculate RAAN for a given launch time, azimuth and inclination form Sriharikota*          
 
 PSLV-C22/IRNSS-1A was launched on 1831(UTC), July 01, 2013   
-
 Paper: MISSION DESIGN AND ANALYSIS FOR IRNSS-1A   
 [ https://www.researchgate.net/publication/277475032_MISSION_DESIGN_AND_ANALYSIS_FOR_IRNSS-1A ]    
 &nbsp;       
@@ -133,22 +125,20 @@ Paper: MISSION DESIGN AND ANALYSIS FOR IRNSS-1A
 ### Results    
 launch time for IRNSS-1A    
 RAAN = 143,  inclination  = 17.877    
--    
 
 ascending node for launch azimuth: 49.0931°    
 launch time UTC : [2013-07-01 12:46:16]  IST : [2013-07-01 18:16:16]    
 
 descending node for launch azimuth: 101.5964°     
 launch time UTC : [2013-07-01 18:12:38]  IST : [2013-07-01 23:42:38]     
--    
-
+&nbsp;      
 
 Reverse calculation (Find RAAN using azimuth, launch_datetime)    
 inclination  = 17.877    
 Azimuth = 101.5964,  Launch Datetime  = 2013-07-01 18:31:25+00:00     
--      
+  
 RAAN        = 147.7080°     
--      
+
 &nbsp;   
 ## References   
 
@@ -163,21 +153,16 @@ RAAN        = 147.7080°
 
 ## Setup
 Script is written with python (Version: 3.6) on linux. Additional modules required :   
-
 * numpy  (tested with Version: 1.21.5 )
 * pytz   (tested with Version:  2022.1 )
-* 
 
 ## How to run   
 * Verify and install required modules 
 * run `python3 launch_time.py`. 
 
-
 ## Updates   
 *   
 *    
-
 ## To-do list
 * Retrograde Orbit (i ≥ 90∘) and northern hemisphere   
 * Southern hemisphere
-
